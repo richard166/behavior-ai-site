@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>行為科學 × 習慣養成 × AI 教學網站</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">AI 行為科學教學</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/habit">習慣追蹤</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">後台管理</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mt-4">
+      <h1 class="mb-4">行為科學 × 習慣養成 × AI 應用教學</h1>
+      {% if articles %}
+      {% for article in articles %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h3 class="card-title">{{ article.title }}</h3>
+          <p class="card-text" style="white-space: pre-wrap">{{ article.content }}</p>
+        </div>
+      </div>
+      {% endfor %}
+      {% else %}
+      <p>目前尚無文章，請由後台新增。</p>
+      {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
