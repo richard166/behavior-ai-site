@@ -12,6 +12,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///behavior.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
+with app.app_context():
+    db.create_all()
 
 
 class Article(db.Model):
@@ -39,22 +41,29 @@ class Habit(db.Model):
         return f'<Habit {self.id} {self.name}>'
 
 
-@app.before_first_request
+#@app.before_first_request
 def initialize_database() -> None:
     """在伺服器第一次接收請求前建立資料表。
     """
     db.create_all()
 
-
+#
+@app.route('/')
 @app.route('/')
 def index():
-    """首頁：列出所有文章。
+    """首頁: 列出所有文章。
     """
     articles = Article.query.order_by(Article.id.desc()).all()
     return render_template('index.html', articles=articles)
 
+#defndex():
+   #"""首頁：列出所有文章。
+  ##"""
+    #articles = Article.query.order_by(Article.id.desc()).all()
+   ##return render_template('index.html', articles=articles)
 
-@app.route('/habit', methods=['GET', 'POST'])
+
+@a###pp.route('/habit', methods=['GET', 'POST'])
 def habit():
     """習慣追蹤頁。可新增習慣與切換完成狀態。
     """
