@@ -152,4 +152,4 @@ def logout():
 if __name__ == '__main__':
     # 在本地端開啟 debug 模式便於開發
       port = int(os.environ.get('PORT', 10000))
-    app.run(host='0.0.0.0', port=port
+        app.run(host='0.0.0.0', port=port)
