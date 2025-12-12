@@ -51,7 +51,7 @@ def initialize_database() -> None:
 
 #
 @app.route('/')
-@app.route('/')
+
 def index():
     """首頁: 列出所有文章。
     """
