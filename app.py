@@ -63,14 +63,15 @@ def index():
    ##return render_template('index.html', articles=articles)
 
 
-@a###pp.route('/habit', methods=['GET', 'POST'])
+@app.route('/habit', methods=['GET', 'POST'])
+
 def habit():
     """習慣追蹤頁。可新增習慣與切換完成狀態。
     """
     if request.method == 'POST':
         name = request.form.get('name')
         description = request.form.get('description')
-        if name:
+if name:
             new_habit = Habit(name=name, description=description)
             db.session.add(new_habit)
             db.session.commit()
