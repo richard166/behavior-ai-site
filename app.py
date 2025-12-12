@@ -64,21 +64,19 @@ def index():
 
 
 @app.route('/habit', methods=['GET', 'POST'])
-
 def habit():
-    """習慣追蹤頁。可新增習慣與切換完成狀態。
-    """
+    """習慣追蹤頁。可新增習慣保持完成狀態。"""
     if request.method == 'POST':
         name = request.form.get('name')
         description = request.form.get('description')
-if name:
+        if name:
             new_habit = Habit(name=name, description=description)
             db.session.add(new_habit)
             db.session.commit()
-        return redirect(url_for('habit'))
+            return redirect(url_for('habit'))
     habits = Habit.query.all()
     return render_template('habit.html', habits=habits)
-
+  
 
 @app.route('/habit/complete/<int:habit_id>')
 def complete_habit(habit_id: int):
