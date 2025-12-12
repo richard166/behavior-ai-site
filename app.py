@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
+i#mport os
+
 
 # 初始化 Flask 應用
 app = Flask(__name__)
@@ -149,4 +151,5 @@ def logout():
 
 if __name__ == '__main__':
     # 在本地端開啟 debug 模式便於開發
-    app.run(debug=True)
+      port = int(os.environ.get('PORT', 10000))
+    app.run(host='0.0.0.0', port=port)
